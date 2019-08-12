@@ -11,7 +11,7 @@ import java.security.ProtectionDomain;
 import java.util.Objects;
 
 public class ClassFileTransformerImpl implements ClassFileTransformer {
-
+    //private static Logger log = LoggerFactory.getLogger(ClassFileTransformerImpl.class);
 
     public byte[] transform(ClassLoader classLoader, String className, Class<?> classBeingRedefined,
                             ProtectionDomain pd, byte[] classfileBuffer) throws IllegalClassFormatException {
@@ -26,7 +26,7 @@ public class ClassFileTransformerImpl implements ClassFileTransformer {
             CtMethod[] methods = cl.getDeclaredMethods();
             for (int i = 0; i < methods.length; i++) {
                 System.out.println("22222:"+methods[i].getName());
-                if (Objects.equals("getNumber",methods[i].getName())) {
+                if (Objects.equals("queryResult",methods[i].getName())) {
 
                     methods[i].addLocalVariable("startTime", CtClass.longType);
                     methods[i].insertBefore("startTime = System.currentTimeMillis();");

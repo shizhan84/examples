@@ -1,5 +1,3 @@
-package cn.okcoming.examples.agentmain;
-
 import com.sun.tools.attach.*;
 
 import java.io.IOException;
@@ -14,9 +12,9 @@ public class AttachTest {
 
         for (VirtualMachineDescriptor vmd : VirtualMachine.list()) {
             System.out.println(vmd);
-            if (vmd.displayName().contains("TestMainInJar")) {
+            if (vmd.displayName().contains("dw-upload.jar")) {
                 VirtualMachine vm = VirtualMachine.attach(vmd);
-                vm.loadAgent("C:\\work\\wangshizhan\\examples\\agentmain\\target\\agentmain-1.0-SNAPSHOT.jar");
+                vm.loadAgent("/home/springboot/agentmain-1.0-SNAPSHOT.jar");
                 System.out.println("loaded");
                 vm.detach();
 
